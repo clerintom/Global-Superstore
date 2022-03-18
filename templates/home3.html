@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PROFIT PREDICTION</title>
+ <style>
+   body {
+            background-color: #e0e2e2c4;
+            text-align: center;
+            padding: 0px;
+        }
+  input[type=text], select {
+  width: 15%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box
+}
+  </style>    
+</head>
+<body >
+
+<!-- Input Form -->
+<div  class="input form">
+    <center>
+    <form action="{{url_for('predict')}}"method="post" id="input head">
+    <h1 id="heading">PROFIT PREDICTION</h1>
+    
+    <label>EXPECTED SALES($)</label> 
+    <br><input style="width: 14%; ;" type="range" min="10" max="25000" value="10"
+     oninput="this.nextElementSibling.value = this.value"  name="sales" >
+    <output>10</output>
+    <!-- <input style="padding: 5px" type="text" name="sales" required=" ">  -->
+
+
+    <br>
+    <br>
+   
+    <label> DISCOUNT(%)</label><br>
+    <input style="width: 15%; ;" type="range" min="0" max="100" value="0"  
+    oninput="this.nextElementSibling.value = this.value" name="discount" >
+    <output>0</output> 
+    <!--<input style="padding: 5px" type="text" name="discount" required=" ">  --> 
+    <br>
+    <br>
+    <label>SHIPPING COST($)</label><br>
+    <input style="width: 15%; ;" type="range" min="0" max="1000" value="0"  
+    oninput="this.nextElementSibling.value = this.value" name="shipping" >
+    <output>0</output>
+      <!--<input style="padding: 5px" type="text" name="shipping" required=" ">  -->
+    <br>
+    <br>
+    
+    <select style="padding: 5px" id="Segment" name = "Segment" > 
+      <option value="">-- Select Segment -- </option>
+        <option value="Consumer">Consumer</option>
+        <option value="Corporate">Corporate</option>
+        <option value="Home Office">Home Office</option>
+    </select>
+    <br>
+    <br>
+    
+    <select style="padding: 5px" id="Category" name = "Category">
+      <option value="">-- Select Category -- </option>
+      <option value="Furniture">Furniture</option> 
+	    <option value="Technology">Technology</option>
+      <option value="Office Supplies">Office Supplies</option>
+        
+        
+    </select>
+    <br>
+    <br>
+    <button  id="submit" type="submit">Predict</button>
+    <br>
+    <br>
+    <br>
+  </form> 
+  </center> 
+
+  <h2 style="color:red";text-align:"center" id="result" >{{prediction_text}}</h2>   
+</div>
+</body>
+</html>
