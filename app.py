@@ -73,19 +73,13 @@ def predict():
     output=model.predict(input_data)
     print(f"output from model is {output}")
     output=round(output.item(),3)
-    return render_template('home3.html',prediction_text="The profit is ($){}".format(output))
 
-    # prediction = np.array([[segment,region,ship_mode]])
-    # output=model.predict(prediction)
-    # print(prediction)
+    if output > 0:
+        return render_template('home3.html',prediction_text_positive="The profit is ($){}".format(output))
+    else:
+         return render_template('home3.html',prediction_text_negative="The profit is ($){}".format(output))
     
-    # output=output.item()
-    # if output == 0:
-    #    return render_template ('home1.html',prediction_text="profit")
-    # else:
-    #    return render_template ('home1.html',prediction_text="loss")
-    
-    # # return render_template ('home1.html',message="hello" )
+   #return render_template('home3.html',prediction_text="The profit is ($){}".format(output))
 
 if __name__=='__main__':
     app.run(host="0.0.0.0", port=9090, debug=True)
